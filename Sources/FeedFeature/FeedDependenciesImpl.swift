@@ -8,5 +8,8 @@
 import Foundation
 
 public class FeedDependenciesImpl: FeedDependencies {
+    public init() {
+        
+    }
     
 }
