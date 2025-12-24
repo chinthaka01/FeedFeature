@@ -12,18 +12,19 @@ struct FeedScreen: View {
     @ObservedObject var viewModel: FeedViewModel
 
     var body: some View {
-        List(viewModel.feeds) { feed in
-            VStack(alignment: .leading) {
-                Text(feed.name)
-                    .font(.headline)
-                Text(feed.formattedBalance)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-        }
+//        List(viewModel.feeds) { feed in
+//            VStack(alignment: .leading) {
+//                Text(feed.name)
+//                    .font(.headline)
+//                Text(feed.formattedBalance)
+//                    .font(.subheadline)
+//                    .foregroundColor(.secondary)
+//            }
+//        }
+        Text("")
         .navigationTitle("Feeds")
         .onAppear {
-            viewModel.loadFeeds()
+            viewModel.loadFeed()
         }
     }
 }

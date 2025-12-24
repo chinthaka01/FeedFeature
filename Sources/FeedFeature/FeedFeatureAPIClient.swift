@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import PlatformKit
 
 public class FeedFeatureAPIClient: FeedFeatureAPI {
     public init() {}
+    
+    public func fetchFeeds() async throws -> any FeedDTO {
+        return FeedDTOImpl()
+    }
 }

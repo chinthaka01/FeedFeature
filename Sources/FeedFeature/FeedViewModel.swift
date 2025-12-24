@@ -6,10 +6,21 @@
 //
 
 import Foundation
+import PlatformKit
 
-class FeedViewModel {
+@MainActor
+class FeedViewModel: ObservableObject {
+    let api: any FeedFeatureAPI
+    let analytics: any Analytics
     
-    public init () {
-        
+    @Published var feedDTO: FeedDTOImpl?
+
+    init(api: FeedFeatureAPI, analytics: Analytics) {
+        self.api = api
+        self.analytics = analytics
+    }
+    
+    func loadFeed() {
+
     }
 }

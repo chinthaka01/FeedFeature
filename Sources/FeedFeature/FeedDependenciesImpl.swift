@@ -6,10 +6,14 @@
 //
 
 import Foundation
+import PlatformKit
 
 public class FeedDependenciesImpl: FeedDependencies {
-    public init() {
-        
-    }
+    public let feedAPI: any FeedFeatureAPI
+    public let analytics: any Analytics
     
+    public init(feedAPI: FeedFeatureAPI, analytics: Analytics) {
+        self.feedAPI = feedAPI
+        self.analytics = analytics
+    }
 }

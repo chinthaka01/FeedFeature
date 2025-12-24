@@ -8,10 +8,15 @@
 import Foundation
 import PlatformKit
 
-struct FeedFeatureFactory: FeatureFactory {
-    let dependencies: FeedDependencies
+public struct FeedFeatureFactory: @MainActor FeatureFactory {
+    public let dependencies: FeedDependencies
+    
+    public init(dependencies: FeedDependencies) {
+        self.dependencies = dependencies
+    }
 
-    func makeFeature() -> MicroFeature {
+    @MainActor
+    public func makeFeature() -> MicroFeature {
         FeedFeatureEntry(dependencies: dependencies)
     }
 }

@@ -3,22 +3,23 @@ import UIKit
 import PlatformKit
 import DesignSystem
 
-public struct FeedFeatureEntry: MicroFeature {
-    public let id = "feeds"
-    public let title = "Feeds"
-    public let tabIcon: UIImage
+struct FeedFeatureEntry: @MainActor MicroFeature {
+
+    let id = "feeds"
+    let title = "Feeds"
+    let tabIcon: UIImage
+    let selectedTabIcon: UIImage
 
     private let dependencies: FeedDependencies
 
-    public init(
-        dependencies: FeedDependencies,
-        tabIcon: UIImage = UIImage(systemName: "banknote")!
-    ) {
+    init(dependencies: FeedDependencies) {
         self.dependencies = dependencies
-        self.tabIcon = tabIcon
+        self.tabIcon = UIImage(systemName: "house")!
+        self.selectedTabIcon = UIImage(systemName: "house")!
     }
 
-    public func makeRootView() -> AnyView {
+    @MainActor
+    func makeRootView() -> AnyView {
         let viewModel = FeedViewModel(
             api: dependencies.feedAPI,
             analytics: dependencies.analytics
