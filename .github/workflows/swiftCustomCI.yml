@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build
-      run: xcodebuild -scheme PlatformKit -destination 'platform=iOS Simulator,name=iPhone 17' clean build
+      run: xcodebuild -scheme FeedFeature -destination 'platform=iOS Simulator,name=iPhone 17' clean build
     - name: Run tests
-      run: xcodebuild -scheme PlatformKit -destination 'platform=iOS Simulator,name=iPhone 17' clean test
+      run: xcodebuild -scheme FeedFeature -destination 'platform=iOS Simulator,name=iPhone 17' clean test
