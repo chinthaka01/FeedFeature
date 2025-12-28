@@ -16,6 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Setup Swift
+      # This action automatically uses the latest stable Swift version by default
+      uses: SwiftyLab/setup-swift@v1
+    - name: Get swift version
+      run: swift --version 
     - name: Build
       run: xcodebuild -scheme FeedFeature -destination 'platform=iOS Simulator,name=iPhone 17' clean build
     - name: Run tests
