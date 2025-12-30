@@ -24,7 +24,9 @@ struct FeedScreen: View {
         Text("")
         .navigationTitle("Feeds")
         .onAppear {
-            viewModel.loadFeed()
+            Task {
+                await viewModel.loadFeed()
+            }
         }
     }
 }

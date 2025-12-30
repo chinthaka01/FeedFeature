@@ -13,14 +13,34 @@ class FeedViewModel: ObservableObject {
     let api: any FeedFeatureAPI
     let analytics: any Analytics
     
-    @Published var feedDTO: FeedDTOImpl?
+    @Published var posts: [Post]?
 
     init(api: FeedFeatureAPI, analytics: Analytics) {
         self.api = api
         self.analytics = analytics
     }
     
-    func loadFeed() {
-
+    func loadFeed() async {
+        do {
+            posts = try await api.fetchFeeds()
+        } catch {
+            print("Failed to load feeds: \(error)")
+        }
+    }
+    
+    func updatePost(_ post: Post) async {
+        do {
+            _ = try await api.updatePost(post)
+        } catch {
+            print("Failed to update post: \(error)")
+        }
+    }
+    
+    func deletePost(_ post: Post) async {
+        do {
+            _ = try await api.deletePost(post)
+        } catch {
+            print("Failed to delete post: \(error)")
+        }
     }
 }
