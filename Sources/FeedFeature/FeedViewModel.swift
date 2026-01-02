@@ -13,7 +13,9 @@ class FeedViewModel: ObservableObject {
     let api: any FeedFeatureAPI
     let analytics: any Analytics
     
-    @Published var posts: [Post]?
+    @Published var posts: [Post] = []
+    @Published var isLoading = true
+    @Published var error: Error? = nil
 
     init(api: FeedFeatureAPI, analytics: Analytics) {
         self.api = api
@@ -21,11 +23,21 @@ class FeedViewModel: ObservableObject {
     }
     
     func loadFeed() async {
+        posts = []
+        error = nil
+        isLoading = true
+
         do {
-            posts = try await api.fetchFeeds()
+            var sortedPosts = try await api.fetchFeeds()
+            sortedPosts.shuffle()
+
+            posts = sortedPosts
         } catch {
             print("Failed to load feeds: \(error)")
+            self.error = error
         }
+        
+        isLoading = false
     }
     
     func updatePost(_ post: Post) async {
@@ -34,6 +46,8 @@ class FeedViewModel: ObservableObject {
         } catch {
             print("Failed to update post: \(error)")
         }
+        
+        isLoading = false
     }
     
     func deletePost(_ post: Post) async {
@@ -42,5 +56,7 @@ class FeedViewModel: ObservableObject {
         } catch {
             print("Failed to delete post: \(error)")
         }
+        
+        isLoading = false
     }
 }
