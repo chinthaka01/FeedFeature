@@ -11,19 +11,22 @@ struct FeedFeatureEntry: @MainActor MicroFeature {
     let selectedTabIcon: UIImage
 
     private let dependencies: FeedDependencies
+    private let viewModel: FeedViewModel
 
+    @MainActor
     init(dependencies: FeedDependencies) {
         self.dependencies = dependencies
         self.tabIcon = UIImage(systemName: "house")!
         self.selectedTabIcon = UIImage(systemName: "house")!
+        
+        self.viewModel = FeedViewModel(
+            api: dependencies.feedAPI,
+            analytics: dependencies.analytics
+        )
     }
 
     @MainActor
     func makeRootView() -> AnyView {
-        let viewModel = FeedViewModel(
-            api: dependencies.feedAPI,
-            analytics: dependencies.analytics
-        )
         return AnyView(FeedRootView(viewModel: viewModel))
     }
 }

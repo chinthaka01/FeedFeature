@@ -28,10 +28,12 @@ class FeedViewModel: ObservableObject {
         isLoading = true
 
         do {
-            var sortedPosts = try await api.fetchFeeds()
-            sortedPosts.shuffle()
+            var allPosts = try await api.fetchFeeds()
+            allPosts.shuffle()
 
-            posts = sortedPosts
+            posts = allPosts
+            
+            broadcastSelfPostsCount()
         } catch {
             print("Failed to load feeds: \(error)")
             self.error = error
@@ -58,5 +60,15 @@ class FeedViewModel: ObservableObject {
         }
         
         isLoading = false
+    }
+
+    private func broadcastSelfPostsCount() {
+        let selfPosts = posts.filter { $0.userId == 1 }
+
+        NotificationCenter.default.post(
+            name: AppBroadcast.selfPostsCount,
+            object: nil,
+            userInfo: ["payload_count": selfPosts.count]
+        )
     }
 }
