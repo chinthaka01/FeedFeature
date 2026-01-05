@@ -8,6 +8,10 @@
 import Foundation
 import PlatformKit
 
+/// View model driving the Feed screens.
+///
+/// Responsible for loading, updating, and deleting posts, and broadcasting
+/// feed-related analytics and notifications.
 @MainActor
 class FeedViewModel: ObservableObject {
     let api: any FeedFeatureAPI

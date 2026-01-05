@@ -10,6 +10,10 @@ import SwiftUI
 import PlatformKit
 import DesignSystem
 
+/// Main feed list screen for the Feed feature.
+///
+/// Renders loading, error, empty, and content states using the shared
+/// `FeedViewModel` and design system components.
 struct FeedScreen: View {
     @ObservedObject var viewModel: FeedViewModel
 

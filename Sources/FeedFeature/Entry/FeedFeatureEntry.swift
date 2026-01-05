@@ -3,6 +3,11 @@ import UIKit
 import PlatformKit
 import DesignSystem
 
+/// Micro frontend entry point for the Feed tab.
+///
+/// Exposes the Feed tab metadata and builds the root SwiftUI view using
+/// the injected dependencies.
+@MainActor
 struct FeedFeatureEntry: @MainActor MicroFeature {
 
     let id = "feeds"
@@ -25,6 +30,7 @@ struct FeedFeatureEntry: @MainActor MicroFeature {
         )
     }
 
+    /// Returns the root view for the Feed feature.
     @MainActor
     func makeRootView() -> AnyView {
         return AnyView(FeedRootView(viewModel: viewModel))

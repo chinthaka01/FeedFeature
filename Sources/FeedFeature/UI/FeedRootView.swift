@@ -10,6 +10,10 @@ import SwiftUI
 import PlatformKit
 import DesignSystem
 
+/// Root SwiftUI entry for the Feed feature.
+///
+/// Hosts the navigation stack and wires the shared `FeedViewModel` into the
+/// first screen of the feature.
 struct FeedRootView: View {
     @StateObject private var viewModel: FeedViewModel
 

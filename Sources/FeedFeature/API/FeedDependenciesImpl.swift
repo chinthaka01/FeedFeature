@@ -8,6 +8,11 @@
 import Foundation
 import PlatformKit
 
+/// Concrete implementation of `FeedDependencies`.
+///
+/// The shell app creates this and passes it into `FeedFeatureFactory` so the
+/// Feed feature can access its API client and analytics without depending
+/// directly on app‑level types.
 public class FeedDependenciesImpl: FeedDependencies {
     public let feedAPI: any FeedFeatureAPI
     public let analytics: any Analytics

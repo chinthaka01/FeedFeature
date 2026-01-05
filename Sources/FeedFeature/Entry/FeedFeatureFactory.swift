@@ -8,6 +8,11 @@
 import Foundation
 import PlatformKit
 
+/// Factory that creates the Feed micro feature.
+///
+/// The shell app owns an instance of this type and calls `makeFeature()`
+/// to obtain the tab descriptor and root view for the Feed module.
+@MainActor
 public struct FeedFeatureFactory: @MainActor FeatureFactory {
     public let dependencies: FeedDependencies
     
