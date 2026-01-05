@@ -101,4 +101,35 @@ To integrate FeedFeature into the host app:
    - Use `id`, `title`, and icons to configure the tab bar item.
    - Call `makeRootView()` to embed the SwiftUI content in the tab’s navigation stack.
 
+***
+
+## How to wire it from the shell app
+
+Example (pseudo‑code):
+
+```swift
+// 1. Create shared dependencies
+let analytics: Analytics = AnalyticsImpl()
+let networking: Networking = NetworkingImpl()
+
+// 2. Create the feature API & dependencies
+let feedAPI: FeedFeatureAPI = FeedFeatureAPIClient(networking: networking)
+let feedDeps = FeedDependenciesImpl(feedAPI: feedAPI, analytics: analytics)
+
+// 3. Create the feature factory
+let feedFactory = FeedFeatureFactory(dependencies: profileDeps)
+
+// 4. Build the MicroFeature and use it in the TabView
+let feedFeature = feedFactory.makeFeature()
+
+TabView {
+    feedFeature
+        .makeRootView()
+        .tabItem {
+            Image(uiImage: feedFeature.tabIcon)
+            Text(feedFeature.title)
+        }
+}
+```
+
 This keeps the feature self‑contained and allows it to be developed, tested, and evolved independently while still using shared platform and design system building blocks.
