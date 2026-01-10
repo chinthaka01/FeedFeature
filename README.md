@@ -146,7 +146,6 @@ PlatformKit - https://github.com/chinthaka01/PlatformKit
 DesignSystem - https://github.com/chinthaka01/DesignSystem
 
 ### Micro Frontends:
-Feed Feature - https://github.com/chinthaka01/FeedFeature
 Friends Feature - https://github.com/chinthaka01/FriendsFeature
 Profile Feature - https://github.com/chinthaka01/ProfileFeature
 
