@@ -37,7 +37,7 @@ public final class FeedFeatureAPIClient: FeedFeatureAPI {
     /// Updates a single post on the BFF and returns the updated model.
     public func updatePost(_ post: Post) async throws -> Post {
         let result = try await networking.updateRecord(
-            bffPath: "/posts/\(post.id)",
+            bffPath: "\(bffPath)/\(post.id)",
             type: Post.self,
             record: post
         )
