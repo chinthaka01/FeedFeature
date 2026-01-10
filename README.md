@@ -133,23 +133,3 @@ TabView {
 ```
 
 This keeps the feature self‑contained and allows it to be developed, tested, and evolved independently while still using shared platform and design system building blocks.
-
-***
-
-## Other Related Repositories
-
-### Shell App:
-Shell - https://github.com/chinthaka01/Wefriendz
-
-### Shared contracts:
-PlatformKit - https://github.com/chinthaka01/PlatformKit
-DesignSystem - https://github.com/chinthaka01/DesignSystem
-
-### Micro Frontends:
-Feed Feature - https://github.com/chinthaka01/FeedFeature
-Friends Feature - https://github.com/chinthaka01/FriendsFeature
-Profile Feature - https://github.com/chinthaka01/ProfileFeature
-
-### Isolate Feature Testing Apps:
-Friends Feature Testing App - https://github.com/chinthaka01/FriendsFeatureApp
-Profile Feature Testing App - https://github.com/chinthaka01/ProfileFeatureApp
