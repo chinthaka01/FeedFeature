@@ -63,7 +63,7 @@ struct PostCard: View {
 
                     Text(post.title)
                         .font(DSTextStyle.headline)
-                        .foregroundColor(.primary)
+                        .foregroundColor(DSColor.secondaryText)
                 }
 
                 Spacer()
